@@ -1,3 +1,7 @@
+import './App.css'
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import {
   AppShell,
   Button,
@@ -7,14 +11,15 @@ import {
   Text
 } from '@mantine/core'
 
-import './App.css'
+import Callback from './components/Callback'
+import Home from './components/Home'
 
 const App = () => {
   return (
     <AppShell
       fixed
       header={
-        <Header height={70} padding="md">
+        <Header height={60} padding="md">
           <Center>
             <Text>Playlist Maker</Text>
           </Center>
@@ -22,9 +27,12 @@ const App = () => {
       }
     >
       <Container>
-        <Center>
-          <Button>Make a playlist!</Button>
-        </Center>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/callback" element={<Callback />} />
+          </Routes>
+        </BrowserRouter>
       </Container>
     </AppShell>
   )
